@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">Vulcan Updates</string>
+    <string name="app_brief">One UI 6.1 Port - Luphaestus</string>
+
+    <string name="press_again_to_exit">Press again to exit.</string>
+    <string name="ok">OK</string>
+    <string name="reject">Reject</string>
+
+    <string name="sesl_cancel">Cancel</string>
+    <string name="sesl_navigate_up">Back</string>
+
+    <!--Tweaks-->
+    <string name="tweaks">Tweaks</string>
+    <string name="display">Display</string>
+    <string name="bugreport">Bug Report</string>
+
+
+
+    <!--OOBE-->
+    <string name="oobe">OOBE</string>
+    <string name="oobe_onboard_msg1_title">Customisable</string>.
+    <string name="oobe_onboard_msg2_title">Automated</string>
+    <string name="oobe_onboard_msg3_title">Free</string>
+    <string name="oobe_onboard_msg1_summary">Customise your phone with tweaks made specifically for Vulcan ROM.</string>
+    <string name="oobe_onboard_msg2_summary">Tweaks are automatically flashed and checked for updates.</string>
+    <string name="oobe_onboard_msg3_summary">No subscriptions, no in-app purchases, no costs at all. Unless you want to donate ;)</string>
+    <string name="tos">Terms of Service</string>
+    <string name="tos_content">1. Acceptance of Terms\n\n1.1 Respect the Work: Vulcan ROM is the product of extensive development. Please do not redistribute or modify it without proper attribution. Sharing is encouraged, but give credit where it’s due.
+\n11.2 Warranty Warning: Using this ROM may void your device warranty. Proceed with this knowledge and at your own risk.\n\n2. Updates and Changes\n\n2.1 Changes to Terms: We reserve the right to modify these terms or the ROM at any time. Please check back regularly for updates.
+\n12.2 Privacy Policy: We respect your privacy. We do not collect personal data without your consent. If data collection is necessary, we will inform you clearly and obtain your permission.\n\n3. Installation Guidelines\n\n3.1 Backup Your Data: Before installing Vulcan ROM, ensure you have a complete backup of your data. This step is crucial as installation will erase your existing data.
+\n13.2 Follow Instructions: Carefully follow the installation instructions provided. Incorrect installation can lead to issues with your device.
+\n13.3 Reporting Issues: If you encounter any bugs or issues, report them to us. Your feedback helps us improve the ROM.\n\n4. Community and Support\n\n4.1 Join the Community: Engage with our community of users. Share your experiences, tips, and support each other. Collaboration enhances everyone’s experience.
+\n14.2 Provide Feedback: Your feedback is valuable. Share your thoughts and suggestions to help us make Vulcan ROM better.</string>
+    <string name="oobe_tos_text">By continuing, you agree to the %1$s.</string>
+    <string name="accept_tos">Continue</string>
+
+    <!--About-->
+    <string name="Software_info">Device Info</string>
+    <string name="About_title">About Vulcan ROM Updates</string>
+    <string name="version">Version %1$s</string>
+    <string name="telegram">Telegram</string>
+    <string name="link_telegram" translatable="false">https://t.me/VulcanROM</string>
+    <string name="premium">Vulcan Premium</string>
+    <string name="link_telegram_premium" translatable="false">https://www.youtube.com/watch?v=dQw4w9WgXcQ</string>
+    <string name="Xda">Xda</string>
+    <string name="link_xda" translatable="false">https://xdaforums.com/</string>
+
+    <string name="vulcan_updates_manifest">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/main/Manifests/VulcanUpdates.xml</string>
+    <string name="app_manifest">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/main/Manifests/Apps.xml</string>
+    <string name="module_manifest">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/main/Manifests/Modules.xml</string>
+    <string name="twrp_manifest">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/main/Manifests/Twrp.xml</string>
+
+    <string name="vulcan_updates_manifest_dev">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/dev/Manifests/VulcanUpdates.xml</string>
+    <string name="app_manifest_dev">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/dev/Manifests/Apps.xml</string>
+    <string name="module_manifest_dev">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/dev/Manifests/Modules.xml</string>
+    <string name="twrp_manifest_dev">https://raw.githubusercontent.com/Luphaestus/VulcanUpdate/dev/Manifests/Twrp.xml</string>
+
+
+    <!--Settings-->
+    <string name="Settings_title">Settings</string>
+    <string name="Settings_title_long">Vulcan Settings</string>
+
+    <string name="design">Design</string>
+    <string name="system_default">System default</string>
+    <string name="language">Language</string>
+    <string name="change_language">Change app language</string>
+    <string name="change_language_not_supported_by_device">Change language is not supported by your device.</string>
+    <string name="delete_appdata_and_exit">Delete App-Data and exit</string>
+    <string name="delete_appdata_and_exit_warning">Attention: This will delete all personal data. Continue? </string>
+    <string name="dev_options">Developer options</string>
+    <string name="more_information">More Information</string>
+    <string name="switchbar_example">This is a SwitchBar example.</string>
+    <string name="Notifications">Notifications</string>
+    <string name="notificaionenable_title">Updates notifications</string>
+    <string name="notifications_description">Automatically check for updates and show a notification when one is available</string>
+    <string name="check_frequency_title">Updates check frequency</string>
+    <string name="Network">Network</string>
+    <string name="update_network_title">Update over network</string>
+    <string name="update_channel">Update channel</string>
+
+
+</resources>

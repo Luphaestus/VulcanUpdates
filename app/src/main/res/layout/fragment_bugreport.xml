@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:dev="http://schemas.oneuiproject.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/oui_background_color">
+
+    <LinearLayout
+        android:id="@+id/bugReportContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_bug_report_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@android:color/transparent"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:layout_marginBottom="16dp"> <!-- Moved margin here -->
+
+            <EditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Bug Report Title"
+                dev:backgroundTint="@color/primary_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_telegram_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@android:color/transparent"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:layout_marginBottom="16dp"> <!-- Moved margin here -->
+
+            <EditText
+                android:id="@+id/edit_telegram_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Telegram Username"
+                dev:backgroundTint="@color/primary_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Device Model"
+            android:textColor="@color/oui_primary_text_color"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner_device_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/error_spinner_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_vulcan_rom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@android:color/transparent"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:layout_marginBottom="16dp"> <!-- Moved margin here -->
+
+            <EditText
+                android:id="@+id/edit_vulcan_rom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Vulcan ROM Version"
+                dev:backgroundTint="@color/primary_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Frequency of Bug"
+            android:textColor="@color/oui_primary_text_color"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/radio_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <RadioButton
+                android:id="@+id/radio_all_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Occurs all the time"
+                android:textColor="@color/oui_primary_text_color" />
+
+            <RadioButton
+                android:id="@+id/radio_occasionally"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Occurs occasionally"
+                android:textColor="@color/oui_primary_text_color" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Occurs after Formatting"
+            android:textColor="@color/oui_primary_text_color"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/radio_formatting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <RadioButton
+                android:id="@+id/radio_formatting_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="@color/oui_primary_text_color" />
+
+            <RadioButton
+                android:id="@+id/radio_formatting_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/oui_primary_text_color" />
+
+            <RadioButton
+                android:id="@+id/radio_formatting_not_tested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not Tested"
+                android:textColor="@color/oui_primary_text_color" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_problem_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@android:color/transparent"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:layout_marginBottom="16dp"> <!-- Moved margin here -->
+
+            <EditText
+                android:id="@+id/edit_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="3"
+                android:hint="Problem Description"
+                dev:backgroundTint="@color/primary_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Bug Report"
+            android:textColor="@color/oui_btn_text_color" />
+
+        <TextView
+            android:id="@+id/error_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dev.oneuiproject.oneui.layout.ToolbarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:navigationIcon="@drawable/ic_oui_back"
+    app:subtitle="@string/app_name"
+    app:title="Refresh Rate"
+    android:id="@+id/toolbar_layout"
+    tools:context=".activities.ForceRefreshRateActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:id="@+id/optionContainer">
+
+            <dev.oneuiproject.oneui.widget.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/oui_background_color"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="60 Hz"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="18sp"
+                            android:textColor="@color/primary_color_themed"
+                            android:layout_gravity="center"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="sec_hrr_preview_cover_60f_dark.json"
+                            app:lottie_loop="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="120 Hz"
+                            android:layout_marginBottom="8dp"
+                            android:textFontWeight="1000"
+                            android:textSize="18sp"
+                            android:textColor="@color/primary_color_themed"
+                            android:layout_gravity="center"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="sec_hrr_preview_cover_120f_dark.json"
+                            app:lottie_loop="true"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </dev.oneuiproject.oneui.widget.RoundLinearLayout>
+
+
+            <dev.oneuiproject.oneui.widget.Separator
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adjust your screen's refresh rate." />
+
+            <dev.oneuiproject.oneui.widget.RoundLinearLayout
+                android:id="@+id/refresh_rate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/oui_background_color"
+                android:orientation="vertical"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:layout_marginTop="6dp">
+
+                <!-- RadioGroup for Refresh Rates -->
+                <RadioGroup
+                    android:id="@+id/radio_group_refresh_rates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- 48Hz Option -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:id="@+id/refresh_rate_48"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_refresh_rate_48"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/refresh_rate_48_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:letterSpacing=".07"
+                                android:text="Refresh Rate 48Hz" />
+
+                            <TextView
+                                android:id="@+id/refresh_rate_48_brief"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:text="Lower refresh rate for battery saving." />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/seperator" />
+
+                    <!-- 60Hz Option -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:id="@+id/refresh_rate_60"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_refresh_rate_60"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/refresh_rate_60_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:letterSpacing=".07"
+                                android:text="Refresh Rate 60Hz" />
+
+                            <TextView
+                                android:id="@+id/refresh_rate_60_brief"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:text="Standard refresh rate." />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/seperator" />
+
+                    <!-- 90Hz Option -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/refresh_rate_90"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_refresh_rate_90"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/refresh_rate_90_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:letterSpacing=".07"
+                                android:text="Refresh Rate 90Hz" />
+
+                            <TextView
+                                android:id="@+id/refresh_rate_90_brief"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:text="Smooth experience." />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/seperator" />
+
+                    <!-- 120Hz Option -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:id="@+id/refresh_rate_120"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_refresh_rate_120"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/refresh_rate_120_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:letterSpacing=".07"
+                                android:text="Refresh Rate 120Hz" />
+
+                            <TextView
+                                android:id="@+id/refresh_rate_120_brief"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:text="High refresh rate for gaming." />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RadioGroup>
+
+            </dev.oneuiproject.oneui.widget.RoundLinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                android:backgroundTint="@color/primary_color_themed"
+                android:padding="8dp"
+                android:paddingStart="80dp"
+                android:paddingEnd="80dp"
+                android:layout_marginTop="16dp"
+            />
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</dev.oneuiproject.oneui.layout.ToolbarLayout>

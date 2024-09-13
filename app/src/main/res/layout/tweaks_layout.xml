@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <dev.oneuiproject.oneui.widget.RoundLinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/oui_background_color"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:shapeAppearanceOverlay="@style/RoundedSquare" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing=".07"
+                    android:textColor="@color/primary_text_icon_color_themed"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.SeslProgressBar
+                        android:id="@+id/progress"
+                        style="@style/Widget.AppCompat.ProgressBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:indeterminate="true"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/brief"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:textColor="@color/primary_text_icon_color_themed"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/download"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|top"
+                        android:background="@drawable/oobe_button_background"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_oui_download" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/delete_button"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|top"
+                        android:background="@drawable/oobe_button_background"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_oui_delete"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/open"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|top"
+                        android:background="@drawable/oobe_button_background"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_oui_open"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/play"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|top"
+                        android:background="@drawable/oobe_button_background"
+                        android:padding="7dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_oui_control_play"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/pause"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|top"
+                        android:background="@drawable/oobe_button_background"
+                        android:padding="7dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_oui_control_pause"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/stop"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|top"
+                        android:background="@drawable/oobe_button_background"
+                        android:padding="7dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_oui_close"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/images_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/image_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="0dp">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:letterSpacing=".07"
+                android:textColor="@color/primary_text_icon_color_themed"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/expand_button"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/expand"
+            android:elevation="20000dp"
+            android:padding="0dp"
+            android:scaleY="1.4" />
+
+    </dev.oneuiproject.oneui.widget.RoundLinearLayout>
+
+
+</LinearLayout>

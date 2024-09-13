@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dev.oneuiproject.oneui.layout.ToolbarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:navigationIcon="@drawable/ic_oui_back"
+    app:subtitle="@string/app_name"
+    app:title="Boot Animation"
+    android:id="@+id/toolbar_layout"
+    tools:context=".activities.SystemBootAnimationActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+
+            <!-- Description Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A system boot animation is have an explanitoin to differentiate this animation, from thebootloader one."
+                android:textSize="16sp"
+                android:textColor="@color/primary_text_icon_color_themed"
+                android:layout_marginBottom="16dp" />
+
+            <!-- File Upload Section -->
+            <dev.oneuiproject.oneui.widget.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/oui_background_color"
+                android:padding="32dp"
+                android:layout_marginBottom="12dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/system_animation_logo"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"
+                    android:src="@drawable/upload_cloudc" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Boot Animation (.qmg file)"
+                        android:textSize="18sp"
+                        android:textColor="@color/oui_primary_text_color"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description about something? what should I put here? should I just delete it? idk"
+                        android:textSize="16sp"
+                        android:textColor="@color/secondary_text_icon_color"
+                        android:layout_marginBottom="64dp" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/button_upload"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Choose File"
+                    android:backgroundTint="@color/primary_color_themed"
+                    android:padding="8dp" />
+            </dev.oneuiproject.oneui.widget.RoundLinearLayout>
+
+            <!-- Apply and Revert Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:id="@+id/button_apply"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Apply"
+                    android:backgroundTint="@color/secondary_text_icon_color"
+                    android:padding="8dp"
+                    android:enabled="false"
+                    android:layout_marginHorizontal="16dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</dev.oneuiproject.oneui.layout.ToolbarLayout>

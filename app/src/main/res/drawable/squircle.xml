@@ -1,0 +1,6 @@
+<!-- rounded_squircle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="20dp" /> <!-- Adjust this radius to get the desired squircle shape -->
+    <solid android:color="@color/primary_color_themed" />
+</shape>
