@@ -26,9 +26,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A system boot animation is have an explanitoin to differentiate this animation, from thebootloader one."
+                android:text="This will flash a custom up-param, which includes the initial boot image (Galaxy Note 20 screen), download mode, device warning messages, and others."
                 android:textSize="16sp"
-                android:textColor="@color/primary_text_icon_color_themed"
+                android:textColor="@color/secondary_text_icon_color"
                 android:layout_marginBottom="16dp" />
 
             <!-- File Upload Section -->
@@ -62,18 +62,34 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Upload Boot Animation (.qmg file)"
+                        android:text="Upload Boot Animation (up_param.bin)"
                         android:textSize="18sp"
                         android:textColor="@color/oui_primary_text_color"
                         android:layout_marginBottom="16dp" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Description about something? what should I put here? should I just delete it? idk"
-                        android:textSize="16sp"
-                        android:textColor="@color/secondary_text_icon_color"
-                        android:layout_marginBottom="64dp" />
+                        android:orientation="vertical"
+                        android:layout_marginBottom="64dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Instructions for Creating a Custom Up-Param"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/oui_primary_text_color" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1. Download the bootloader (BL) for your device from SamFW.\n2. Extract the contents of the downloaded BL file.\n3. Open Up-Param as an archive (please do not extract it).\n4. Edit the desired image using Microsoft Paint, or obtain a pre-made image from our Telegram group."
+                            android:textSize="12sp"
+                            android:maxLines="30"
+                            android:textColor="@color/secondary_text_icon_color" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
 
@@ -81,9 +97,19 @@
                     android:id="@+id/button_upload"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Choose File"
+                    android:text="@string/choose_file"
                     android:backgroundTint="@color/primary_color_themed"
                     android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/filename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selected_file_shutdown_animation_qmg"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:textColor="@color/secondary_text_icon_color" />
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
             <!-- Apply and Revert Buttons -->

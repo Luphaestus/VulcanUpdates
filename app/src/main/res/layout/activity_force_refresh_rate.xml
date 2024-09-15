@@ -89,7 +89,6 @@
 
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
-
             <dev.oneuiproject.oneui.widget.Separator
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,6 +109,53 @@
                     android:id="@+id/radio_group_refresh_rates"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
+                    <!-- Adaptive Option -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:id="@+id/refresh_rate_adaptive"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_refresh_rate_adaptive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/refresh_rate_adaptive_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:letterSpacing=".07"
+                                android:text="Adaptive Refresh Rate" />
+
+                            <TextView
+                                android:id="@+id/refresh_rate_adaptive_brief"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/primary_text_icon_color_themed"
+                                android:text="Automatically adjusts based on content." />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/seperator" />
 
                     <!-- 48Hz Option -->
                     <LinearLayout
@@ -298,23 +344,23 @@
 
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <Button
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apply"
-                android:backgroundTint="@color/primary_color_themed"
-                android:padding="8dp"
-                android:paddingStart="80dp"
-                android:paddingEnd="80dp"
-                android:layout_marginTop="16dp"
-            />
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apply"
+                    android:backgroundTint="@color/primary_color_themed"
+                    android:padding="8dp"
+                    android:paddingStart="80dp"
+                    android:paddingEnd="80dp"
+                    android:layout_marginTop="16dp"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </dev.oneuiproject.oneui.layout.ToolbarLayout>
