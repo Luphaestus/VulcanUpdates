@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "DEPRECATION")
 
 package com.vulcanizer.updates.activities
 
@@ -30,12 +30,12 @@ import dev.oneuiproject.oneui.layout.AppInfoLayout
 import kotlinx.coroutines.launch
 import org.w3c.dom.Document
 
-public fun getAppVersion(context: Context): String {
+fun getAppVersion(context: Context): String {
     return try {
         val packageInfo: PackageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
         val versionName = packageInfo.versionName
         packageInfo.longVersionCode.toString()
-        "$versionName"
+        versionName
     } catch (e: PackageManager.NameNotFoundException) {
         "information not available"
     }
@@ -50,6 +50,7 @@ class AboutActivity : AppCompatActivity() {
     private lateinit var AppManifest : Document
     private var updateStatus = 0
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         when (updateStatus) {
             0 -> {
@@ -72,7 +73,7 @@ class AboutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        var appsettings = ConfigHandler(this, "appsettings")
+        val appsettings = ConfigHandler(this, "appsettings")
 
         super.onCreate(savedInstanceState)
         binding = ActivityAboutBinding.inflate(layoutInflater)
@@ -125,9 +126,13 @@ class AboutActivity : AppCompatActivity() {
     fun checkUpdate()
     {
         binding.appInfoLayout.status = AppInfoLayout.LOADING
-        binding.appInfoLayout.setNavigationButtonOnClickListener(View.OnClickListener {
-            Toast.makeText(this@AboutActivity, "Checking for updates, please wait!", Toast.LENGTH_SHORT).show()
-        })
+        binding.appInfoLayout.setNavigationButtonOnClickListener {
+            Toast.makeText(
+                this@AboutActivity,
+                "Checking for updates, please wait!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 //        if (ApkInstaller.isInstallationRunning())
 //        {
 //            binding.appInfoLayout.addOptionalText("Installing application...")
@@ -170,17 +175,22 @@ class AboutActivity : AppCompatActivity() {
                         binding.appInfoLayout.status = AppInfoLayout.UPDATE_AVAILABLE
                         AppManifest = document
                         updateStatus = 2
-                        binding.appInfoLayout.setNavigationButtonOnClickListener(View.OnClickListener {
-                            Toast.makeText(this@AboutActivity, "Please update the application!", Toast.LENGTH_SHORT).show()
-                        })
+                        binding.appInfoLayout.setNavigationButtonOnClickListener {
+                            Toast.makeText(
+                                this@AboutActivity,
+                                "Please update the application!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                     else
                     {
                         updateStatus = 3
                         binding.appInfoLayout.status = AppInfoLayout.NO_UPDATE
-                        binding.appInfoLayout.setNavigationButtonOnClickListener(View.OnClickListener {
+                        binding.appInfoLayout.setNavigationButtonOnClickListener {
                             onBackPressed()
-                        })                    }
+                        }
+                    }
                 } ?: run {
                     Log.e("XML GET TAG","Failed to parse the XML file.")
                     binding.appInfoLayout.status = AppInfoLayout.NO_CONNECTION
@@ -192,9 +202,9 @@ class AboutActivity : AppCompatActivity() {
                 Handler(Looper.getMainLooper()).postDelayed({
                     Log.e("FAILED", errorMessage)
                     updateStatus = 1
-                    binding.appInfoLayout.setNavigationButtonOnClickListener(View.OnClickListener {
+                    binding.appInfoLayout.setNavigationButtonOnClickListener {
                         onBackPressed()
-                    })
+                    }
                     binding.appInfoLayout.status = AppInfoLayout.NO_CONNECTION
                 }, 1000)
             }
@@ -217,7 +227,7 @@ class AboutActivity : AppCompatActivity() {
     fun openPremium(v: View?) {
         try {
             val intent = Intent(Intent.ACTION_VIEW)
-            var appsettings = ConfigHandler(this, "appsettings")
+            val appsettings = ConfigHandler(this, "appsettings")
             if (appsettings.getBoolean("dev", false))
             {
                 intent.data = Uri.parse(getString(R.string.link_telegram_premium))
