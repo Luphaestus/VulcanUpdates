@@ -6,10 +6,13 @@ plugins {
     //id("com.google.devtools.ksp")
 }
 
+
+
 val releaseStoreFile: String? by rootProject
 val releaseStorePassword: String? by rootProject
 val releaseKeyAlias: String? by rootProject
 val releaseKeyPassword: String? by rootProject
+
 
 android {
     namespace = "com.vulcanizer.updates"
@@ -22,6 +25,7 @@ android {
         versionCode = 3
         versionName = "2.5.6"
         resourceConfigurations += listOf("en")
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -52,7 +56,6 @@ android {
             isDebuggable = false
             isMinifyEnabled = false
             isShrinkResources = false
-
 
         }
         debug {

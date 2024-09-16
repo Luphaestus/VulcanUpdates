@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/java/com/vulcanizer/updates/utils/sensitive_info.kt
