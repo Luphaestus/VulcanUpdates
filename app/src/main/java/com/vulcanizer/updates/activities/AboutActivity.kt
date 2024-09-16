@@ -3,31 +3,32 @@
 package com.vulcanizer.updates.activities
 
 import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import dagger.hilt.android.AndroidEntryPoint
-import dev.oneuiproject.oneui.layout.AppInfoLayout
-import android.widget.Toast
-import kotlinx.coroutines.launch
-import com.vulcanizer.updates.utils.ConfigHandler
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.vulcanizer.updates.utils.ApkInstaller
-import com.vulcanizer.updates.utils.DataDownloader
-import com.vulcanizer.updates.utils.XMLParser
-import org.w3c.dom.Document
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.vulcanizer.updates.BuildConfig
 import com.vulcanizer.updates.R
 import com.vulcanizer.updates.databinding.ActivityAboutBinding
+import com.vulcanizer.updates.utils.ApkInstaller
+import com.vulcanizer.updates.utils.ConfigHandler
+import com.vulcanizer.updates.utils.DataDownloader
+import com.vulcanizer.updates.utils.XMLParser
+import dagger.hilt.android.AndroidEntryPoint
+import dev.oneuiproject.oneui.layout.AppInfoLayout
+import kotlinx.coroutines.launch
+import org.w3c.dom.Document
 
 public fun getAppVersion(context: Context): String {
     return try {
@@ -99,9 +100,11 @@ class AboutActivity : AppCompatActivity() {
             if (clicks > 5) {
                 clicks = 0
                 lifecycleScope.launch {
-                    val newDevModeEnabled = !appsettings.getBoolean("dev", false)
-                    appsettings.saveBoolean("dev", newDevModeEnabled)
-                    setVersionTextView(version, newDevModeEnabled, premium)
+                    if (BuildConfig.DEBUG) {
+                        val newDevModeEnabled = !appsettings.getBoolean("dev", false)
+                        appsettings.saveBoolean("dev", newDevModeEnabled)
+                        setVersionTextView(version, newDevModeEnabled, premium)
+                    }
                 }
             }
         }
