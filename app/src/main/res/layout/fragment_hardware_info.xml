@@ -15,8 +15,8 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ram Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/ram_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -24,7 +24,6 @@
             android:background="@color/oui_background_color"
             android:orientation="vertical"
             android:padding="16dp"
-            android:id="@+id/abcdea"
         >
 
             <!-- androidDeviceInfo -->
@@ -61,8 +60,8 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Internal Storage Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/internal_storage_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -70,7 +69,6 @@
             android:background="@color/oui_background_color"
             android:orientation="vertical"
             android:padding="16dp"
-            android:id="@+id/abcdeb"
             >
 
             <!-- javaEnvironmentInfo -->
@@ -85,15 +83,16 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cpu Frequency"
-            tools:ignore="HardcodedText" />
+            android:text="@string/cpu_frequency"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -114,15 +113,16 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cpu Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/cpu_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -143,7 +143,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
     </LinearLayout>

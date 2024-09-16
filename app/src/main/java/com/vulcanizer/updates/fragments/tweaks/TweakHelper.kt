@@ -35,6 +35,7 @@ import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.InputStreamReader
+import java.util.Locale
 
 typealias DownloadCompletionHandler = (
     tempPath: String,
@@ -49,7 +50,7 @@ typealias DownloadCompletionHandler = (
 ) -> Unit
 
 
-fun setStatus(view: TextView, roundLinearLayout: LinearLayout, isSuccess:Boolean, previous: String="", completeStatus: ((container: LinearLayout, name: String) -> Unit)? = null, packageName: String="") {
+fun setStatus(context:Context, view: TextView, roundLinearLayout: LinearLayout, isSuccess:Boolean, previous: String="", completeStatus: ((container: LinearLayout, name: String) -> Unit)? = null, packageName: String="") {
 
     roundLinearLayout.findViewById<SeslProgressBar>(R.id.progress).visibility = View.GONE
     roundLinearLayout.findViewById<AppCompatImageButton>(R.id.stop).visibility = View.GONE
@@ -61,7 +62,7 @@ fun setStatus(view: TextView, roundLinearLayout: LinearLayout, isSuccess:Boolean
         completeStatus!!(roundLinearLayout, packageName)
     }
     else {
-        view.text = "FAILED"
+        view.text = context.getString(R.string.download_failed)
     }
 }
 
@@ -141,8 +142,8 @@ fun tweakDownloader(
     val notificationBuilder = NotificationCompat.Builder(context, channelId)
         .setSmallIcon(dev.oneuiproject.oneui.R.drawable.ic_oui_download) // Replace with your download icon
         .setBadgeIconType(dev.oneuiproject.oneui.R.drawable.ic_oui_download)
-        .setContentTitle("Download in Progress")
-        .setContentText("Starting download...")
+        .setContentTitle(context.getString(R.string.download_in_progress))
+        .setContentText(context.getString(R.string.starting_download))
         .setPriority(NotificationCompat.PRIORITY_LOW)
         .setOngoing(true)
 
@@ -168,8 +169,9 @@ fun tweakDownloader(
             val progress = (request.downloadedBytes * 100 / request.totalBytes).toInt()
 
             // Update the text view with the current download status
-            textView.text = "${request.downloadedBytes / 1024 / 1024}MB / ${request.totalBytes / 1024 / 1024}MB"
-
+            val downloadedMB = request.downloadedBytes / 1024 / 1024
+            val totalMB = request.totalBytes / 1024 / 1024
+            textView.text = context.getString(R.string.download_progress, downloadedMB, totalMB)
             // Check if at least 1 second has passed since the last update
             if (currentTime - lastUpdateTime >= 1000) {
                 // Update notification with progress
@@ -183,9 +185,9 @@ fun tweakDownloader(
         },
         onCompleted = {
             downloadState.saveBoolean(fileName, false)
-            textView.text = "Installing..."
+            textView.text = context.getString(R.string.installing)
             // Update notification to show download completed
-            notificationBuilder.setContentText("Download completed")
+            notificationBuilder.setContentText(context.getString(R.string.download_completed))
                 .setProgress(0, 0, false)
                 .setOngoing(false)
                 .setSmallIcon(dev.oneuiproject.oneui.R.drawable.ic_oui_checkbox_checked) // Replace with your download icon
@@ -194,32 +196,32 @@ fun tweakDownloader(
             notificationManager.notify(downloadId, notificationBuilder.build())
 
             onCompletion(tempPath, fileName, textView, linearLayout, packageName, tweakContainer, context, previous) { success ->
-                setStatus(textView, linearLayout, success, previous, setSuccessStatus, packageName)
+                setStatus(context, textView, linearLayout, success, previous, setSuccessStatus, packageName)
             }
         },
         onError = {
             downloadState.saveBoolean(fileName, false)
 
             // Update notification to show error
-            notificationBuilder.setContentText("Download failed: $it")
+            notificationBuilder.setContentText(context.getString(R.string.download_failed_with_message, it))
                 .setProgress(0, 0, false)
                 .setOngoing(false)
             notificationManager.notify(downloadId, notificationBuilder.build())
 
             if (it == "Cancelled")
-                setStatus(textView, linearLayout, true, previous, setSuccessStatus, packageName)
+                setStatus(context, textView, linearLayout, true, previous, setSuccessStatus, packageName)
             else
-                setStatus(textView, linearLayout, false)
+                setStatus(context, textView, linearLayout, false)
         },
         onPause = {
             linearLayout.findViewById<SeslProgressBar>(R.id.progress).visibility = View.GONE
             linearLayout.findViewById<AppCompatImageButton>(R.id.stop).visibility = View.GONE
             linearLayout.findViewById<AppCompatImageButton>(R.id.pause).visibility = View.GONE
             linearLayout.findViewById<AppCompatImageButton>(R.id.play).visibility = View.VISIBLE
-            textView.text = "Paused ".plus(textView.text)
-
+            val currentText = textView.text.toString() // Get the current text
+            textView.text = context.getString(R.string.paused_text, currentText)
             // Update notification to show paused
-            notificationBuilder.setContentText("Download paused")
+            notificationBuilder.setContentText(context.getString(R.string.download_paused))
                 .setOngoing(false)
             notificationManager.notify(downloadId, notificationBuilder.build())
         }
@@ -243,7 +245,7 @@ fun handleDownloadComplete(
         val map = XMLParser.documentToMap(document)
         for (key in map.keys) {
             val data = map[key]!! as MutableMap<String, String>
-            val name = key.replace('_', ' ').split(" ").joinToString(" ") { it.capitalize() }
+            val name = key.replace('_', ' ').split(" ").joinToString(" ") { it.capitalize(Locale.ROOT) }
             data["name"] = name
 
             val packageName = data["package"].toString()
@@ -275,7 +277,7 @@ fun handleDownloadComplete(
                 layout.findViewById<AppCompatImageButton>(R.id.download).visibility = View.GONE
                 layout.findViewById<AppCompatImageButton>(R.id.play).visibility = View.GONE
                 val brief = layout.findViewById<TextView>(R.id.brief)
-                brief.text = "Waiting..."
+                brief.text = context.getString(R.string.waiting)
                 tweakDownloader(layout, brief, data["brief"]!!, packageName, data, kDownloader, tweakContainer, context, url, fileName, onCompletion, setStatus)
             }
 
@@ -299,6 +301,8 @@ fun handleDownloadComplete(
     }
     DataDownloader.deleteFile(path)
 }
+
+
 
 
 fun runShellCommand(command: String, onSuccess: () -> Unit = {}, onFailure: (String, String) -> Unit = { _, _ -> }, onFailuerCallback: ((Boolean) -> Unit)? = null ) {

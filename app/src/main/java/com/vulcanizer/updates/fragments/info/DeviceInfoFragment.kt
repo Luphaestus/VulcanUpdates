@@ -71,7 +71,7 @@ class DeviceInfoFragment : Fragment() {
 
     // Function to get the user-friendly device name
     fun getDeviceName(): String {
-        val model = Build.MODEL.toUpperCase()
+        val model =    Build.MODEL.uppercase()
         return deviceNameMap[model] ?: "${Build.MANUFACTURER} $model"
     }
 
@@ -210,17 +210,13 @@ class DisplayInfoUtil(private val context: Context) {
     }
 
     private fun getDisplayName(display: Display): String {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return display.name
-        }
+        return display.name
         return "Unknown"
     }
 
     private fun getRefreshRate(display: Display): Float {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            val mode = display.mode
-            return mode.refreshRate
-        }
+        val mode = display.mode
+        return mode.refreshRate
         return -1f
     }
 

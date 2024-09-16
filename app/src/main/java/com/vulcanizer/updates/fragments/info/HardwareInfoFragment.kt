@@ -198,12 +198,8 @@ class HardwareInfoFragment : Fragment() {
         // Number of cores per CPU architecture
         val cores = mutableMapOf<String, Int>()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            for (abi in Build.SUPPORTED_ABIS) {
-                cores[abi] = Runtime.getRuntime().availableProcessors()
-            }
-        } else {
-            cores[Build.CPU_ABI] = Runtime.getRuntime().availableProcessors()
+        for (abi in Build.SUPPORTED_ABIS) {
+            cores[abi] = Runtime.getRuntime().availableProcessors()
         }
 
         // Counting the occurrences of each CPU architecture

@@ -8,7 +8,7 @@
         <SwitchPreferenceCompat
             android:key="notifications"
             android:summary="@string/notifications_description"
-            android:title="@string/notificaionenable_title" />
+            android:title="@string/notificaion_enable_title" />
 
         <ListPreference
             android:defaultValue="24"

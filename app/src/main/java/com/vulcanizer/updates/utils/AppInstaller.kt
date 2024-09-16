@@ -1,3 +1,5 @@
+@file:Suppress("SameParameterValue", "SameParameterValue", "SameParameterValue")
+
 package com.vulcanizer.updates.utils
 
 import android.app.DownloadManager
@@ -7,21 +9,14 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.vulcanizer.updates.R
 import dev.oneuiproject.oneui.widget.Toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
 
 
 class ApkInstaller {

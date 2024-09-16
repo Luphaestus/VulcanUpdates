@@ -2,7 +2,6 @@ package com.vulcanizer.updates.fragments.tweaks
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,15 +53,14 @@ class SUFragment : Fragment() {
                             },
                             onFailure = { errorMessage, errorCode ->
                                 GlobalScope.launch(Dispatchers.Main) {
-                                    Toast.makeText(requireContext(), "Module uninstallation failed: $errorMessage (Code: $errorCode)", Toast.LENGTH_SHORT).show()
-                                }
+                                    Toast.makeText(requireContext(), getString(R.string.module_uninstallation_failed, errorMessage, errorCode), Toast.LENGTH_SHORT).show()                                }
                             }
                         )
                     }
                 }
             },
             onFailure = {
-                Toast.makeText(requireContext(), "Failed to retrieve module list", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.failed_to_retrieve_module_list), Toast.LENGTH_SHORT).show()
             }
         )
     }
@@ -79,7 +77,7 @@ class SUFragment : Fragment() {
         callback: (Boolean) -> Unit // Add a callback parameter
     ) {
         val command = "ksud module install $tempPath/$fileName"
-        textView.text = "Installing..."
+        textView.text = getString(R.string.installing)
         runShellCommand(command,
             onSuccess = {
                 GlobalScope.launch(Dispatchers.Main) {

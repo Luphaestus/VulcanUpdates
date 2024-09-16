@@ -92,7 +92,7 @@ public class TweakFragment : Fragment() {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             val binding = (requireActivity() as MainActivity).binding
-            binding.drawerLayoutMain.setTitle("Vulcan Updates", "Vulcan Updates")
+            binding.drawerLayoutMain.setTitle(getString(R.string.app_name), getString(R.string.app_name))
             val mainTabs = requireActivity().findViewById<MarginsTabLayout>(R.id.main_tabs)
             mainTabs.visibility = View.VISIBLE
             mainTabs.getTabAt(0)?.select()
@@ -122,9 +122,9 @@ public class TweakFragment : Fragment() {
         mainTabs.removeAllTabs()
 
         if (mainTabs.tabCount == 0) {
-            mainTabs.addTab(mainTabs.newTab().setText("Twrp"))
-            mainTabs.addTab(mainTabs.newTab().setText("Modules"))
-            mainTabs.addTab(mainTabs.newTab().setText("Apps"))
+            mainTabs.addTab(mainTabs.newTab().setText(getString(R.string.tab_twrp)))
+            mainTabs.addTab(mainTabs.newTab().setText(getString(R.string.tab_modules)))
+            mainTabs.addTab(mainTabs.newTab().setText(getString(R.string.tab_apps)))
             mainTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
                     val fragmentToShow: Fragment = when (tab.text) {
@@ -172,7 +172,7 @@ fun createTweak(
     download: ((linearLayout: LinearLayout, textView: TextView, previous: String, data: Any?, context: Context) -> Unit)? = null
 ): LinearLayout {
     val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    val roundLinearLayout = inflater.inflate(R.layout.tweaks_layout, null) as LinearLayout
+    val roundLinearLayout = inflater.inflate(R.layout.tweaks_layout, root, false) as LinearLayout
     root.addView(roundLinearLayout)
 
     roundLinearLayout.findViewById<TextView>(R.id.title).text = title
@@ -202,7 +202,7 @@ fun createTweak(
         roundLinearLayout.findViewById<AppCompatImageButton>(R.id.stop).visibility = View.VISIBLE
         roundLinearLayout.findViewById<AppCompatImageButton>(R.id.download).visibility = View.GONE
         roundLinearLayout.findViewById<AppCompatImageButton>(R.id.play).visibility = View.GONE
-        briefView.text = "Waiting..."
+        briefView.text = context.getString(R.string.waiting)
         download?.invoke(roundLinearLayout, briefView, brief, data, context)
     }
 

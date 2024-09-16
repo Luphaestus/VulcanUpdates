@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -24,6 +22,8 @@ import com.vulcanizer.updates.R
 import com.vulcanizer.updates.fragments.tweaks.runShellCommandForResult
 import com.vulcanizer.updates.utils.TelegramBot
 import dev.oneuiproject.oneui.layout.DrawerLayout
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class BugReportFragment : Fragment() {
 
@@ -31,7 +31,6 @@ class BugReportFragment : Fragment() {
     private lateinit var telegramUsernameEditText: EditText
     private lateinit var submitButton: Button
     private lateinit var errorTextView: TextView
-    private lateinit var deviceSpinner: Spinner
     private lateinit var titleInputLayout: TextInputLayout
     private lateinit var vulcanRomInputLayout: TextInputLayout
 
@@ -60,18 +59,11 @@ class BugReportFragment : Fragment() {
         telegramUsernameEditText = view.findViewById(R.id.edit_telegram_username)
         submitButton = view.findViewById(R.id.button_submit)
         errorTextView = view.findViewById(R.id.error_text_view)
-        deviceSpinner = view.findViewById(R.id.spinner_device_info)
         titleInputLayout = view.findViewById(R.id.text_input_bug_report_title)
         vulcanRomInputLayout = view.findViewById(R.id.text_input_vulcan_rom)
         descriptionInputLayout = view.findViewById(R.id.text_input_problem_description)
 
-        // Set up the Spinner with device options
-        val deviceOptions = resources.getStringArray(R.array.device_options).toMutableList()
-        deviceOptions.add(0, "Choose model") // Add placeholder at the top
-        val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, deviceOptions)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        deviceSpinner.adapter = adapter
+
 
         // Set up the submit button click listener
         submitButton.setOnClickListener {
@@ -101,39 +93,10 @@ class BugReportFragment : Fragment() {
         setupTextWatcher(view.findViewById(R.id.edit_vulcan_rom), vulcanRomInputLayout)
         setupTextWatcher(view.findViewById(R.id.edit_description), descriptionInputLayout)
 
-        // Set up the Spinner item selection listener
-        deviceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val selectedItem = parent.getItemAtPosition(position).toString()
-                if (selectedItem == "Choose model") {
-                    // Do nothing, or you can show a message if needed
-                } else {
-                    // Remove the placeholder from the Spinner
-                    val deviceOptions =
-                        resources.getStringArray(R.array.device_options).toMutableList()
-                    deviceOptions.remove("Choose model") // Remove the placeholder
-                    val adapter = ArrayAdapter(
-                        requireContext(),
-                        android.R.layout.simple_spinner_item,
-                        deviceOptions
-                    )
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    deviceSpinner.adapter = adapter
 
-                    // Clear error for the spinner
-                    clearError(deviceSpinner)
-                }
-            }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Do nothing
-            }
-        }
+        val binding = (requireActivity() as MainActivity).binding
+        binding.drawerLayoutMain.setTitle("Bug Report", "Bug Report")
     }
 
     private fun setupTextWatcher(editText: EditText, inputLayout: TextInputLayout) {
@@ -204,14 +167,33 @@ class BugReportFragment : Fragment() {
         }
         submitButton.isEnabled = true
     }
+    fun getVendorDevice(): String? {
+        return try {
+            // Execute the getprop command
+            val process = Runtime.getRuntime().exec("getprop ro.product.vendor.device")
+            val reader = BufferedReader(InputStreamReader(process.inputStream))
 
+            // Read the output
+            val vendorDevice = reader.readLine()
+
+            // Wait for the process to complete
+            process.waitFor()
+
+            vendorDevice
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
     private fun submitBugReport() {
         Log.e("BugReport", "COmpiling")
-        runShellCommandForResult("ksud module list", onSuccess =  {moduleMap -> sendToTelegram(moduleMap.toString())}, onFailure = {})
+
+        runShellCommandForResult("ksud module list", onSuccess =  {moduleMap -> sendToTelegram(moduleMap.keys.toString())}, onFailure = {})
     }
 
-    private fun sendToTelegram(modules:String)
-    {
+
+
+    private fun sendToTelegram(modules: String) {
         // Check cooldown
         val lastSubmissionTime = sharedPreferences.getLong("last_submission_time", 0)
         val currentTime = System.currentTimeMillis()
@@ -237,7 +219,6 @@ class BugReportFragment : Fragment() {
         // Get the values from the input fields
         val title = titleEditText.text.toString()
         val telegramUsername = telegramUsernameEditText.text.toString()
-        val device = deviceSpinner.selectedItem.toString()
         val vulcanRom = vulcanRomEditText.text.toString()
         val frequency = when (frequencyRadioGroup.checkedRadioButtonId) {
             R.id.radio_all_time -> "Occurs all the time"
@@ -263,10 +244,6 @@ class BugReportFragment : Fragment() {
             errors.add("Invalid Telegram username. Please use the format @username.")
             showError(telegramUsernameInputLayout, "Invalid Telegram username. Please use the format @username.")
         }
-        if (device == "Choose model") {
-            errors.add("Device selection is required.")
-            showError(deviceSpinner, "Device selection is required.")
-        }
         if (vulcanRom.isEmpty()) {
             errors.add("Vulcan ROM is required.")
             showError(vulcanRomInputLayout, "Vulcan ROM is required.")
@@ -284,9 +261,9 @@ class BugReportFragment : Fragment() {
             showError(descriptionInputLayout, "Description is required.")
         }
 
-        // If there are errors, show a generic message and return
+        // If there are errors, show all error messages and return
         if (errors.isNotEmpty()) {
-            errorTextView.text = "Missing fields"
+            errorTextView.text = errors.joinToString("\n") // Join all error messages with a newline
             errorTextView.visibility = View.VISIBLE
             return
         } else {
@@ -298,13 +275,13 @@ class BugReportFragment : Fragment() {
     --------------------
     Title: $title
     Telegram Username: $telegramUsername
-    Device: $device
+    Device: ${getVendorDevice()}
     Vulcan ROM: $vulcanRom
     Kernel Module: $modules
     Frequency of Occurrence: $frequency
     Formatting Issue: $formatting
     Description: $description
-    """.trimIndent() // This will remove leading whitespace64
+    """.trimIndent() // This will remove leading whitespace
 
         Log.e("BugReport", bugReport)
         val telegrambot = TelegramBot()
@@ -316,6 +293,7 @@ class BugReportFragment : Fragment() {
         // Show a confirmation dialog
         showAlertDialog("Bug report submitted successfully!")
     }
+
 
     private fun showAlertDialog(message: String) {
         val builder = AlertDialog.Builder(requireContext())

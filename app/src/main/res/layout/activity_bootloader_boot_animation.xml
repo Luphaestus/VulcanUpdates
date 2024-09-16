@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This will flash a custom up-param, which includes the initial boot image (Galaxy Note 20 screen), download mode, device warning messages, and others."
+                android:text="@string/bootloader_anim_description"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_icon_color"
                 android:layout_marginBottom="16dp" />
@@ -42,7 +42,6 @@
                 android:layout_marginBottom="12dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/system_animation_logo"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="4dp"
@@ -62,7 +61,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Upload Boot Animation (up_param.bin)"
+                        android:text="@string/bootloader_anim_upload_title"
                         android:textSize="18sp"
                         android:textColor="@color/oui_primary_text_color"
                         android:layout_marginBottom="16dp" />
@@ -76,7 +75,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Instructions for Creating a Custom Up-Param"
+                            android:text="@string/bootloader_anim_upload_description"
                             android:textSize="12sp"
                             android:textStyle="bold"
                             android:textColor="@color/oui_primary_text_color" />
@@ -84,7 +83,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="1. Download the bootloader (BL) for your device from SamFW.\n2. Extract the contents of the downloaded BL file.\n3. Open Up-Param as an archive (please do not extract it).\n4. Edit the desired image using Microsoft Paint, or obtain a pre-made image from our Telegram group."
+                            android:text="@string/bootloader_anim_upload_instructions"
                             android:textSize="12sp"
                             android:maxLines="30"
                             android:textColor="@color/secondary_text_icon_color" />
@@ -94,11 +93,11 @@
 
 
                 <Button
-                    android:id="@+id/button_upload"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="@string/choose_file"
                     android:backgroundTint="@color/primary_color_themed"
+                    android:id="@+id/buttonUpload"
                     android:padding="8dp" />
 
                 <TextView
@@ -121,18 +120,16 @@
                 android:layout_marginTop="16dp">
 
                 <Button
-                    android:id="@+id/button_apply"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Apply"
+                    android:text="@string/apply"
                     android:backgroundTint="@color/secondary_text_icon_color"
                     android:padding="8dp"
                     android:enabled="false"
-                    android:layout_marginHorizontal="16dp" />
+                    android:layout_marginHorizontal="16dp"
+                    android:id="@+id/buttonApply"/>
 
             </LinearLayout>
-
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </dev.oneuiproject.oneui.layout.ToolbarLayout>

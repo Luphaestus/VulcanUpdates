@@ -1,0 +1,2 @@
+ui_print("Flashing boot logo");
+package_extract_file("bootloaderAnim/up_param.bin", "/dev/block/bootdevice/by-name/up_param");

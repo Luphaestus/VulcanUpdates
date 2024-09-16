@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Tab layout for sub-tabs -->
     <dev.oneuiproject.oneui.widget.MarginsTabLayout
-        android:id="@+id/fragment_design_sub_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/fragmentDesignSubTabs"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 
+    <!-- Frame layout with rounded corners for the ViewPager -->
     <dev.oneuiproject.oneui.widget.RoundFrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,9 +19,9 @@
         app:roundedCorners="top_left|top_right">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager2_design"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:id="@+id/viewPager2Design"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     </dev.oneuiproject.oneui.widget.RoundFrameLayout>
 </LinearLayout>

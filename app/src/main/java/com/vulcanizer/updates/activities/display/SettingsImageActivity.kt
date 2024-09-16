@@ -1,6 +1,5 @@
 package com.vulcanizer.updates.activities
 
-import CreateFlashAbleZip
 import FilePicker
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -11,32 +10,30 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.vulcanizer.updates.R
-import com.vulcanizer.updates.databinding.ActivityBootloaderBootAnimationBinding
+import com.vulcanizer.updates.databinding.ActivitySettingsImageBinding
+import com.vulcanizer.updates.fragments.tweaks.runShellCommand
 import java.io.File
 
-class BootloaderBootAnimationActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityBootloaderBootAnimationBinding
+class SettingsImageActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingsImageBinding
 
     private lateinit var destinationFolderPath: String
-    private val fileName: String = "bootloaderbootanim"
-    private val sourceDir: String = "bootloaderAnim"
+    private val fileName: String = "settingsAnim"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBootloaderBootAnimationBinding.inflate(layoutInflater)
+        binding = ActivitySettingsImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarLayout.setNavigationButtonOnClickListener { finish() }
 
         destinationFolderPath = "${cacheDir.absolutePath}/$fileName"
-        CreateFlashAbleZip.createTree(destinationFolderPath, sourceDir, assets)
-        File(destinationFolderPath, sourceDir).apply { mkdir() }
 
-        initFilePicker(binding.buttonUpload, "up_param.bin", binding.filename)
+        initFilePicker(binding.buttonUpload, "DeviceImage.png", binding.filename)
 
         binding.buttonApply.setOnClickListener {
-            Log.e("Button Apply", "Clicked")
-            CreateFlashAbleZip.zipFolder(destinationFolderPath, "${filesDir.absolutePath}/$fileName.zip")
-            CreateFlashAbleZip.flashZip("${filesDir.absolutePath}/$fileName.zip", this)
+            Log.e("Button Apply", "$destinationFolderPath/DeviceImage.png")
+            runShellCommand("cp $destinationFolderPath/DeviceImage.png /data/user_de/0/com.android.settings/files/DeviceImage.png")
+
         }
     }
 
@@ -50,14 +47,14 @@ class BootloaderBootAnimationActivity : AppCompatActivity() {
             if (button.text == getString(R.string.remove_file)) {
                 handleFileRemoval(fileName, filenameTextView, button)
             } else {
-                filePicker.pickFile("*/*", "bin")
+                filePicker.pickFile("image/png")
             }
         }
     }
 
     private fun handleFileSelection(filePath: String, fileName: String, selectedFileName: String, filenameTextView: TextView, button: Button) {
         val selectedFile = File(filePath)
-        val destinationFile = File("${destinationFolderPath}/$sourceDir", fileName)
+        val destinationFile = File(destinationFolderPath, fileName)
         selectedFile.copyTo(destinationFile, overwrite = true)
 
         filenameTextView.text = getString(R.string.selected_file, selectedFileName)
@@ -67,7 +64,7 @@ class BootloaderBootAnimationActivity : AppCompatActivity() {
     }
 
     private fun handleFileRemoval(fileName: String, filenameTextView: View, button: Button) {
-        val file = File("${destinationFolderPath}/$sourceDir", fileName)
+        val file = File(destinationFolderPath, fileName)
         file.delete()
         filenameTextView.visibility = View.GONE
         button.text = getString(R.string.choose_file)
@@ -86,3 +83,4 @@ class BootloaderBootAnimationActivity : AppCompatActivity() {
     }
 
 }
+///data/user_de/0/com.android.settings/files/DeviceImage.png

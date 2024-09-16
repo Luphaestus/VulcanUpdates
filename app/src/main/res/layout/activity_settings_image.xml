@@ -26,9 +26,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A system boot animation is have an explanitoin to differentiate this animation, from thebootloader one."
+                android:text="@string/device_image_settings_description"
                 android:textSize="16sp"
-                android:textColor="@color/primary_text_icon_color_themed"
+                android:textColor="@color/secondary_text_icon_color"
                 android:layout_marginBottom="16dp" />
 
             <!-- File Upload Section -->
@@ -62,18 +62,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Upload Boot Animation (.qmg file)"
+                        android:text="@string/device_settings_image_upload_title"
                         android:textSize="18sp"
                         android:textColor="@color/oui_primary_text_color"
                         android:layout_marginBottom="16dp" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Description about something? what should I put here? should I just delete it? idk"
-                        android:textSize="16sp"
-                        android:textColor="@color/secondary_text_icon_color"
-                        android:layout_marginBottom="64dp" />
+
+
                 </LinearLayout>
 
 
@@ -81,9 +76,19 @@
                     android:id="@+id/button_upload"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Choose File"
+                    android:text="@string/choose_file"
                     android:backgroundTint="@color/primary_color_themed"
                     android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/filename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selected_file_shutdown_animation_qmg"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:textColor="@color/secondary_text_icon_color" />
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
             <!-- Apply and Revert Buttons -->
@@ -98,7 +103,7 @@
                     android:id="@+id/button_apply"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Apply"
+                    android:text="@string/oui_common_apply"
                     android:backgroundTint="@color/secondary_text_icon_color"
                     android:padding="8dp"
                     android:enabled="false"

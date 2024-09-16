@@ -1,6 +1,7 @@
 package com.vulcanizer.updates.fragments.tweaks
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,12 +36,11 @@ class TwrpFragment : Fragment() {
         previous: String,
         callback: (Boolean) -> Unit // Add a callback parameter
     ) {
-        var adjuctedpath = tempPath.replace("user/0/","")
-        val fileNameClean = fileName//.replace(Regex("[^a-zA-Z.-]"), "")
-        runShellCommand("echo  install  /data$adjuctedpath/$fileNameClean >> /cache/recovery/openrecoveryscript",
+        val adjustededpath = tempPath.replace("user/0/","")
+        runShellCommand("echo  install  /data$adjustededpath/$fileName >> /cache/recovery/openrecoveryscript",
             onSuccess = {
                 GlobalScope.launch(Dispatchers.Main) {
-                    runShellCommand("echo cmd rm -rf /data$adjuctedpath/$fileNameClean >> /cache/recovery/openrecoveryscript\n",
+                    runShellCommand("echo cmd rm -rf /data$adjustededpath/$fileName >> /cache/recovery/openrecoveryscript\n",
                         onSuccess = {
                             GlobalScope.launch(Dispatchers.Main) {
                                 showRebootDialog(true, "recovery", this@TwrpFragment.requireContext())
@@ -61,7 +61,8 @@ class TwrpFragment : Fragment() {
     }
 
     private fun setStatus(container: LinearLayout, name: String) {
-        // Implementation needed
+        //TODO
+        Log.e("Twrp", "TODO")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

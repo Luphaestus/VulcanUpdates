@@ -30,23 +30,21 @@
             android:id="@+id/no_networks_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Root not available "
+            android:text="@string/root_not_available"
             android:textSize="24sp"
             android:layout_marginBottom="20dp"/>
         <!-- No Networks Available Message -->
         <TextView
-            android:id="@+id/no_networks_tmessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please give Vulcan Updates root permission within Kernel SU."
+            android:text="@string/give_root_plz"
             android:textSize="16sp"
             android:textAlignment="center"
             />
         <TextView
-            android:id="@+id/no_networks_tmessagge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Make sure to press 3 dots > show system apps to show Vulcan Updates in Kernel Su."
+            android:text="@string/give_root_instructions"
             android:textSize="16sp"
             android:textAlignment="center"
             android:layout_marginBottom="20dp"/>
@@ -56,7 +54,7 @@
             android:id="@+id/button_try_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Try again"
+            android:text="@string/retry"
             android:letterSpacing="0.1"
             android:paddingStart="48dp"
             android:paddingEnd="48dp"

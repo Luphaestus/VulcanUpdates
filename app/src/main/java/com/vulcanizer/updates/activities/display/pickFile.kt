@@ -1,3 +1,4 @@
+
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
@@ -5,11 +6,15 @@ import android.content.Intent
 import android.content.res.AssetManager
 import android.net.Uri
 import android.provider.OpenableColumns
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.vulcanizer.updates.fragments.tweaks.runShellCommand
+import com.vulcanizer.updates.fragments.tweaks.showRebootDialog
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -33,7 +38,6 @@ class FilePicker(
                 val uri: Uri? = result.data?.data
                 uri?.let {
                     val fileName = getFileName(it)
-                    Log.e("file picker", allowedExtension!!)
                     if (allowedExtension != null && !FileTypeChecker.isFileTypeMatching(fileName!!, allowedExtension!!)) {
                         val actualFileType = File(fileName).extension
                         showFileTypeErrorDialog(activity, allowedExtension!!)
@@ -73,12 +77,12 @@ class FilePicker(
     // New function to copy the selected file to a temporary directory
     private fun copyFileToTempDirectory(uri: Uri, onFileCopied: (filePath: String?) -> Unit) {
     val tempFile = File(activity.cacheDir, getFileName(uri) ?: "temp_file")
-        activity.contentResolver.openInputStream(uri)?.use { inputStream: InputStream ->
-            FileOutputStream(tempFile).use { outputStream ->
+    activity.contentResolver.openInputStream(uri)?.use { inputStream: InputStream ->
+        FileOutputStream(tempFile).use { outputStream ->
                 inputStream.copyTo(outputStream)
             }
         }
-        onFileCopied(tempFile.absolutePath) // Call the lambda with the file path
+    onFileCopied(tempFile.absolutePath)
     }
 
     fun showFileTypeErrorDialog(context: Context, expectedFileType: String) {
@@ -166,5 +170,26 @@ object CreateFlashAbleZip {
                 zipOut.closeEntry()
             }
         }
+    }
+
+    fun flashZip(zipFilePath: String, context: Context) {
+        val adjustededpath = zipFilePath.replace("user/0/","")
+        runShellCommand("echo  install  /data$adjustededpath >> /cache/recovery/openrecoveryscript",
+            onSuccess = {
+                GlobalScope.launch(Dispatchers.Main) {
+                    runShellCommand("echo cmd rm -rf /data$adjustededpath >> /cache/recovery/openrecoveryscript\n",
+                        onSuccess = {
+                            GlobalScope.launch(Dispatchers.Main) {
+                                showRebootDialog(true, "recovery", context)
+                            }
+                        },
+                        onFailure = { errorCode, errorMessage ->
+                        }
+                    )
+                }
+            },
+            onFailure = { errorCode, errorMessage ->
+            }
+        )
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:navigationIcon="@drawable/ic_oui_back"
     app:subtitle="@string/app_name"
-    app:title="Boot Animation"
+    app:title="@string/boot_animation_title"
     android:id="@+id/toolbar_layout"
     tools:context=".activities.SystemBootAnimationActivity">
 
@@ -20,14 +20,16 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Description TextView -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="These animations will appear after the Galaxy Note 20 boot screen."
+                android:text="@string/boot_animation_description"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_icon_color"
                 android:layout_marginBottom="16dp" />
 
+            <!-- Boot Samsung Section -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +46,6 @@
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/bootsamsung_logo"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginEnd="8dp"
@@ -60,7 +61,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Upload Boot Samsung (.qmg file)"
+                            android:text="@string/upload_boot_samsung"
                             android:textSize="18sp"
                             android:textColor="@color/oui_primary_text_color"
                             android:layout_marginBottom="4dp" />
@@ -68,32 +69,34 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Animation that plays before Samsung Loop. Only plays once."
+                            android:text="@string/boot_samsung_description"
                             android:textSize="16sp"
                             android:textColor="@color/secondary_text_icon_color" />
                     </LinearLayout>
                 </LinearLayout>
 
+                <!-- Button to upload Boot Samsung -->
                 <Button
-                    android:id="@+id/button_upload_bootsamsung"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Choose File"
-                    android:backgroundTint="@color/primary_color_themed"
-                    android:padding="8dp" />
+                    android:id="@+id/buttonUploadBootsamsung"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_file"
+                android:backgroundTint="@color/primary_color_themed"
+                android:padding="8dp" />
 
                 <!-- Filename indicator for Boot Samsung -->
                 <TextView
-                    android:id="@+id/filename_bootsamsung"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Selected file: None"
-                    android:layout_marginTop="8dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/secondary_text_icon_color"
-                    android:visibility="gone" />
+                    android:id="@+id/filenameBootsamsung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selected_file_none"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text_icon_color"
+                android:visibility="gone" />
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
+            <!-- Boot Samsung Loop Section -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +113,6 @@
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/bootsamsungloop_logo"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginEnd="8dp"
@@ -126,7 +128,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Upload Boot Samsung Loop (.qmg file)"
+                            android:text="@string/upload_boot_samsung_loop"
                             android:textSize="18sp"
                             android:textColor="@color/oui_primary_text_color"
                             android:layout_marginBottom="4dp" />
@@ -134,32 +136,34 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="This animation plays continuously until the phone is booted"
+                            android:text="@string/boot_samsung_loop_description"
                             android:textSize="16sp"
                             android:textColor="@color/secondary_text_icon_color" />
                     </LinearLayout>
                 </LinearLayout>
 
+                <!-- Button to upload Boot Samsung Loop -->
                 <Button
-                    android:id="@+id/button_upload_bootsamsungloop"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Choose File"
-                    android:backgroundTint="@color/primary_color_themed"
-                    android:padding="8dp" />
+                    android:id="@+id/buttonUploadBootsamsungloop"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_file"
+                android:backgroundTint="@color/primary_color_themed"
+                android:padding="8dp" />
 
                 <!-- Filename indicator for Boot Samsung Loop -->
                 <TextView
-                    android:id="@+id/filename_bootsamsungloop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Selected file: None"
-                    android:layout_marginTop="8dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/secondary_text_icon_color"
-                    android:visibility="gone" />
+                    android:id="@+id/filenameBootsamsungloop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selected_file_none"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text_icon_color"
+                android:visibility="gone" />
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
+            <!-- Shutdown Samsung Section -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,7 +180,6 @@
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/shutdownsamsung_logo"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginEnd="8dp"
@@ -192,7 +195,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Upload Shutdown Samsung (.qmg file)"
+                            android:text="@string/upload_shutdown_samsung"
                             android:textSize="18sp"
                             android:textColor="@color/oui_primary_text_color"
                             android:layout_marginBottom="4dp" />
@@ -200,32 +203,34 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Animation that is shown when powering off the phone"
+                            android:text="@string/shutdown_samsung_description"
                             android:textSize="16sp"
                             android:textColor="@color/secondary_text_icon_color" />
                     </LinearLayout>
                 </LinearLayout>
 
+                <!-- Button to upload Shutdown Samsung -->
                 <Button
-                    android:id="@+id/button_upload_shutdownsamsung"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Choose File"
-                    android:backgroundTint="@color/primary_color_themed"
-                    android:padding="8dp" />
+                    android:id="@+id/buttonUploadShutdownsamsung" 
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_file"
+                android:backgroundTint="@color/primary_color_themed"
+                android:padding="8dp" />
 
                 <!-- Filename indicator for Shutdown Samsung -->
                 <TextView
-                    android:id="@+id/filename_shutdownsamsung"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Selected file: shutdown_animation.qmg"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    android:textColor="@color/secondary_text_icon_color" />
+                    android:id="@+id/filenameShutdownsamsung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selected_file_shutdown"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:textColor="@color/secondary_text_icon_color" />
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
+            <!-- Apply Button Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -237,7 +242,7 @@
                     android:id="@+id/button_apply"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Apply"
+                    android:text="@string/apply"
                     android:backgroundTint="@color/secondary_text_icon_color"
                     android:padding="8dp"
                     android:enabled="false"

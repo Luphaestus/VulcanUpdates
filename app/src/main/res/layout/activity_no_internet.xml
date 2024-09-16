@@ -7,7 +7,6 @@
 
     <!-- App Name in the Top Left Corner -->
     <TextView
-        android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -27,10 +26,9 @@
 
         <!-- No Networks Available Message -->
         <TextView
-            android:id="@+id/no_networks_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No networks available"
+            android:text="@string/no_network"
             android:textSize="18sp"
             android:layout_marginBottom="20dp"/>
 
@@ -39,7 +37,7 @@
             android:id="@+id/button_try_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Try again"
+            android:text="@string/retry"
             android:letterSpacing="0.1"
             android:paddingStart="48dp"
             android:paddingEnd="48dp"

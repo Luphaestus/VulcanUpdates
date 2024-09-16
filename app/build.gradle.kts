@@ -24,11 +24,7 @@ android {
         resourceConfigurations += listOf("en")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags += ""
-            }
-        }
+
     }
 
     signingConfigs {
@@ -124,7 +120,7 @@ dependencies {
 
     implementation("com.airbnb.android:lottie:6.3.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.github.varungulatii:Kdownloader:1.0.4")
     implementation("com.github.bumptech.glide:glide:4.12.0")

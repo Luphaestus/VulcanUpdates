@@ -15,8 +15,8 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Android Device Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/android_device_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -24,7 +24,6 @@
             android:background="@color/oui_background_color"
             android:orientation="vertical"
             android:padding="16dp"
-            android:id="@+id/abcdea"
         >
 
             <!-- androidDeviceInfo -->
@@ -61,8 +60,8 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Java Environment Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/java_environment_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -85,15 +84,16 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kernel Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/kernel_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -114,7 +114,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 

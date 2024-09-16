@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.vulcanizer.updates.activities
 
 import android.content.ActivityNotFoundException

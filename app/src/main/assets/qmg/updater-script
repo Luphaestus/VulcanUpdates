@@ -1,13 +1,11 @@
-
-
 mount("ext4", "EMMC", map_partition("system"), "/system_root");
 
 ui_print("Flashing boot logo");
-package_extract_file("bootsamsung.qmg", "/system_root/system/media/bootsamsung.qmg");
-package_extract_file("bootsamsungloop.qmg", "/system_root/system/media/bootsamsungloop.qmg");
+package_extract_dir("qmg", "/system_root/system/media");
+
 run_program("/system/bin/chmod", "0644", "/system_root/system/media/bootsamsung.qmg");
 run_program("/system/bin/chmod", "0644", "/system_root/system/media/bootsamsungloop.qmg");
-
+run_program("/system/bin/chmod", "0644", "shutdown.qmg");
 
 
 

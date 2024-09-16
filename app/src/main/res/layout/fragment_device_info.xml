@@ -15,8 +15,8 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Device Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/device_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -24,8 +24,7 @@
             android:background="@color/oui_background_color"
             android:orientation="vertical"
             android:padding="16dp"
-            android:id="@+id/abcdea"
-        >
+            >
 
             <!-- model -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,17 +49,15 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Battery information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/battery_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/oui_background_color"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:id="@+id/abcdeb"
-            >
+            android:padding="16dp">
 
             <!-- fingerPrint -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,15 +71,16 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Information"
-            tools:ignore="HardcodedText" />
+            android:text="@string/display_information"
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -103,7 +101,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -112,9 +111,9 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Information"
+            android:text="@string/camera_information_0"
             android:id="@+id/camera0s"
-            tools:ignore="HardcodedText" />
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -135,16 +134,17 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Information"
+            android:text="@string/camera_information_1"
             android:id="@+id/camera1s"
-            tools:ignore="HardcodedText" />
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -165,7 +165,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -174,9 +175,9 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Information"
+            android:text="@string/camera_information_2"
             android:id="@+id/camera2s"
-            tools:ignore="HardcodedText" />
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -197,7 +198,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -206,9 +208,9 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Information"
+            android:text="@string/camera_information_3"
             android:id="@+id/camera3s"
-            tools:ignore="HardcodedText" />
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -229,16 +231,17 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Information"
+            android:text="@string/camera_information_4"
             android:id="@+id/camera4s"
-            tools:ignore="HardcodedText" />
+            />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -259,7 +262,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintWidth_percent="1.0"/>
+                    app:layout_constraintWidth_percent="1.0"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
     </LinearLayout>

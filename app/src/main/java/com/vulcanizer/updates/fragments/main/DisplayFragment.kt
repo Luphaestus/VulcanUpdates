@@ -11,8 +11,8 @@ import com.vulcanizer.updates.MainActivity
 import com.vulcanizer.updates.R
 import com.vulcanizer.updates.activities.BootloaderBootAnimationActivity
 import com.vulcanizer.updates.activities.ForceRefreshRateActivity
+import com.vulcanizer.updates.activities.SettingsImageActivity
 import com.vulcanizer.updates.activities.SystemBootAnimationActivity
-import com.vulcanizer.updates.activities.SystemShutdownAnimationActivity
 import dev.oneuiproject.oneui.layout.DrawerLayout
 
 class DisplayFragment : Fragment() {
@@ -23,34 +23,39 @@ class DisplayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val layout = inflater.inflate(R.layout.fragment_display, container, false)
+
         val forceRefreshLayout = layout.findViewById<LinearLayout>(R.id.force_refresh_option)
+        val bootloaderBootLayout = layout.findViewById<LinearLayout>(R.id.bootloader_animation_option)
+        val systemBootLayout = layout.findViewById<LinearLayout>(R.id.system_animation_option)
+        val settingsImageLayout = layout.findViewById<LinearLayout>(R.id.settings_image_option)
+
         forceRefreshLayout.setOnClickListener {
             startActivity(Intent(requireContext(), ForceRefreshRateActivity::class.java))
         }
-
-        val bootloaderBootLayout = layout.findViewById<LinearLayout>(R.id.bootloader_animation_option)
-        val systemBootLayout = layout.findViewById<LinearLayout>(R.id.system_animation_option)
-        val systemShutdownLayout = layout.findViewById<LinearLayout>(R.id.system_shutdown_animation_option)
-
         bootloaderBootLayout.setOnClickListener {
             startActivity(Intent(requireContext(), BootloaderBootAnimationActivity::class.java))
         }
         systemBootLayout.setOnClickListener {
             startActivity(Intent(requireContext(), SystemBootAnimationActivity::class.java))
         }
-        systemShutdownLayout.setOnClickListener {
-            startActivity(Intent(requireContext(), SystemShutdownAnimationActivity::class.java))
+        settingsImageLayout.setOnClickListener {
+            startActivity(Intent(requireContext(), SettingsImageActivity::class.java))
         }
 
         return layout
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = (requireActivity() as MainActivity).binding
+        binding.drawerLayoutMain.setTitle("Display", "Display")
+    }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             val binding = (requireActivity() as MainActivity).binding
-            binding.drawerLayoutMain.setTitle("Vulcan Updates", "Vulcan Updates")
+            binding.drawerLayoutMain.setTitle("Display", "Display")
             scrollToTop()
         }
     }

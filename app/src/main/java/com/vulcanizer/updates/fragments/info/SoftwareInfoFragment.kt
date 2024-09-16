@@ -69,7 +69,7 @@ class SoftwareInfoFragment : Fragment() {
         val minutes = (uptimeMillis % 3600000) / 60000
         val seconds = (uptimeMillis % 60000) / 1000
         // Format the uptime string
-        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        return String.format(Locale.ROOT, "%02d:%02d:%02d", hours, minutes, seconds)
     }
 
     private fun getSoftwareInfo() {
